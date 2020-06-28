@@ -1,3 +1,5 @@
+const DEFAULT_COLOR = "#808080";
+
 window.onload = function () {
   // create canvas element and append it to document body
   var canvas = document.createElement("canvas");
@@ -10,7 +12,7 @@ window.onload = function () {
   resize();
   // Default Line config
   ctx.lineCap = "butt";
-  ctx.strokeStyle = "#808080";
+  ctx.strokeStyle = DEFAULT_COLOR;
   // resize canvas
   window.addEventListener("resize", resize);
   function resize() {
@@ -18,8 +20,6 @@ window.onload = function () {
     ctx.canvas.height = window.innerHeight;
   }
 
-  // last known position
-  var pos = { x: 0, y: 0 };
   const elements = [
     { x0: 50, y0: 100, x1: 80, y1: 140, isHovered: false },
     { x0: 200, y0: 200, x1: 280, y1: 240, isHovered: false },
@@ -28,15 +28,21 @@ window.onload = function () {
   function renderElements() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     elements.forEach((el) => {
+      // config
       ctx.setLineDash([10, 5]);
       ctx.lineWidth = 2;
 
+      // Stroke borders for hovered el.
       if (el.isHovered) {
         ctx.lineWidth = ctx.strokeStyle = "#21E0D7";
-      } else ctx.strokeStyle = "#808080";
+      } else ctx.strokeStyle = DEFAULT_COLOR;
+
       ctx.beginPath(); // begin
       ctx.moveTo(el.x0, el.y0); // from
-      // ctx.fillText("Var1", pos.x, pos.y - 10);
+      // print variable name
+      // ctx.fillStyle = "#000000";
+      // ctx.fillText("Var1", el.x0, el.y0 - 10);
+
       ctx.strokeRect(el.x0, el.y0, el.x1 - el.x0, el.y1 - el.y0);
       ctx.lineTo(el.x0, el.y0); // to
       ctx.stroke(); // draw it!
@@ -76,32 +82,31 @@ window.onload = function () {
         stateAnyElementsHovered = false;
     }
   }
-  document.addEventListener("mousedown", setPosition);
-  document.addEventListener("mouseenter", renderElements);
 
-  function getStartingPosition(e) {
-    return { x: e.clientX, y: e.clientY };
+  let isMouseDown = false;
+  let selectedElementIndex = null; // WIP
+  function newElement() {
+    isMouseDown = true;
+    const newElement = {
+      x0: currMousePosition.x,
+      y0: currMousePosition.y,
+      x1: currMousePosition.x,
+      y1: currMousePosition.y,
+    };
+    elements.push(newElement);
+    selectedElementIndex = elements.length - 1;
   }
 
-  function draw(e) {
-    console.log("draw");
-    canvas.style.cursor = "crosshair";
-    // mouse left button must be pressed
-    if (e.buttons !== 1) return;
-    // rec.draw();
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.beginPath(); // begin
-
-    ctx.setLineDash([10, 5]);
-
-    const position = getStartingPosition(e);
-    ctx.moveTo(pos.x, pos.y); // from
-    ctx.fillText("Var1", pos.x, pos.y - 10);
-    // setPosition(e);
-    ctx.strokeRect(pos.x, pos.y, position.x - pos.x, position.y - pos.y);
-
-    ctx.lineTo(pos.x, pos.y); // to
-
-    ctx.stroke(); // draw it!
+  function functionUpdateNewestElement() {
+    if (isMouseDown) {
+      elements[elements.length - 1].x1 = currMousePosition.x;
+      elements[elements.length - 1].y1 = currMousePosition.y;
+      renderElements();
+    }
   }
+
+  document.addEventListener("mousedown", newElement);
+  document.addEventListener("mousemove", functionUpdateNewestElement);
+  document.addEventListener("mouseup", () => (isMouseDown = false));
+  // document.addEventListener("mouseenter", renderElements);
 };
