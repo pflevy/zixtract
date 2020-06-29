@@ -63,11 +63,12 @@ window.onload = function () {
         e.clientX >= el.x0 &&
         e.clientY >= el.y0 &&
         e.clientX <= el.x1 &&
-        e.clientY <= el.y1
+        e.clientY <= el.y1 &&
+        el.hasOwnProperty("isHovered")
       ) {
-        el.isHovered = true;
+        if (el.isHovered !== true) el.isHovered = true;
         return true;
-      } else {
+      } else if (el.hasOwnProperty("isHovered")) {
         if (el.isHovered !== false) el.isHovered = false;
       }
     });
@@ -107,6 +108,9 @@ window.onload = function () {
 
   document.addEventListener("mousedown", newElement);
   document.addEventListener("mousemove", functionUpdateNewestElement);
-  document.addEventListener("mouseup", () => (isMouseDown = false));
+  document.addEventListener("mouseup", () => {
+    isMouseDown = false;
+    elements[elements.length - 1].isHovered = false;
+  });
   // document.addEventListener("mouseenter", renderElements);
 };
