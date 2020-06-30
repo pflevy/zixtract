@@ -1,14 +1,28 @@
 <html>
   <head>
     <title>Canvas</title>
-    <script src="./script.js"></script>
     <script src="./rendering.js"></script>
   </head>
   <body>
+    <img
+      crossorigin="anonymous"
+      id="image"
+      src="https://lh5.googleusercontent.com/proxy/3g6ds5Otnj0eRB8UcSOBCMBDLa8NMoX-GA-GYnJTVfydkBGIwXRlc30rnEJnzTxr5fkleICfMALVSh3VJ_GFb8wxJE_3p-uInLm8YKHBTkOQ8a53=w5000-h5000"
+      style="display: none;"
+    />
     <span
       id="currMousePos"
       style="position: absolute; top: 10; left: 10; user-select: none;"
     ></span>
+    <button
+      onclick="applyTessereactToAll()"
+      style="position: absolute; z-index: 100;"
+    >
+      Validate
+    </button>
   </body>
   <script src="./currMousePos.js"></script>
+  <script src="https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js"></script>
+  <script src="./textExtraction.js"></script>
+  <script src="./script.js"></script>
 </html>
