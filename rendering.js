@@ -1,3 +1,39 @@
+function renderElements() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(image, 10, 10, canvas.width, canvas.height);
+
+  elements.forEach((el, index) => {
+    // config
+    ctx.setLineDash([10, 5]);
+    ctx.lineWidth = DEFAULT_LINE_WIDTH;
+
+    // Stroke borders for hovered el.
+    if (el.isHovered) {
+      ctx.lineWidth = ctx.strokeStyle = "#21E0D7";
+    } else ctx.strokeStyle = DEFAULT_COLOR;
+
+    ctx.beginPath(); // begin
+    ctx.moveTo(el.x0, el.y0); // from
+
+    // print variable name
+    ctx.fillStyle = "#000000";
+    ctx.fillText(`var${index}: ${el.text}`, el.x0, el.y0 - 10);
+    // Printing random text to test the crop and textextract
+    // ctx.font = "30px Arial";
+    // ctx.fillText(`TEST TXT`, el.x0 + 30, el.y0 + 30);
+
+    ctx.strokeRect(el.x0, el.y0, el.x1 - el.x0, el.y1 - el.y0);
+    ctx.lineTo(el.x0, el.y0); // to
+    ctx.stroke(); // draw it!
+    ctx.closePath();
+    // Draw selectors if hovered.
+    if (el.isHovered) {
+      createSelectionAdjustPoints(ctx, el);
+    }
+  });
+  console.log("Rendering elements... done.");
+}
+
 function createSelectionAdjustPoints(ctx, el) {
   ctx.setLineDash([]);
   for (let i = 0; i <= 1; i++) {
