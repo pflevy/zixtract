@@ -17,10 +17,7 @@ function renderElements() {
 
     // print variable name
     ctx.fillStyle = "#000000";
-    ctx.fillText(`var${index}: ${el.text}`, el.x0, el.y0 - 10);
-    // Printing random text to test the crop and textextract
-    // ctx.font = "30px Arial";
-    // ctx.fillText(`TEST TXT`, el.x0 + 30, el.y0 + 30);
+    ctx.fillText(`var${index}: ${el.extractedText}`, el.x0, el.y0 - 10);
 
     ctx.strokeRect(el.x0, el.y0, el.x1 - el.x0, el.y1 - el.y0);
     ctx.lineTo(el.x0, el.y0); // to

@@ -34,4 +34,5 @@ document.addEventListener("mouseup", () => {
   isMouseDown = false;
   elements[elements.length - 1].isHovered = false;
   canvas.style.cursor = "default";
+  applyTessereactToAll();
 });
