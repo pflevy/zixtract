@@ -11,12 +11,13 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/upload-artifact@v2
-        with:
-            name: public
-            path: public # or path/to/artifact
       - name: Checkout Repo
         uses: actions/checkout@master
+      - name: Archive Production Artifact
+        uses: actions/upload-artifact@v2
+        with:
+            name: public
+            path: public
       - name: Download Artifact
         uses: actions/download-artifact@master
         with:
