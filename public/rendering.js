@@ -1,6 +1,6 @@
 function renderElements() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.drawImage(image, 10, 10, canvas.width, canvas.height);
+  ctx.drawImage(image, 10, 10, 770, canvas.height);
 
   elements.forEach((el, index) => {
     // config
