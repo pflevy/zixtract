@@ -25,10 +25,10 @@ let stateAnyElementsHovered = false;
 function handleMouseMove(e) {
   const anyElementHovered = elements.some((el) => {
     if (
-      e.clientX >= el.x0 &&
-      e.clientY >= el.y0 &&
-      e.clientX <= el.x1 &&
-      e.clientY <= el.y1 &&
+      currMousePosition.x >= el.x0 &&
+      currMousePosition.y >= el.y0 &&
+      currMousePosition.x <= el.x1 &&
+      currMousePosition.y <= el.y1 &&
       el.hasOwnProperty("isHovered")
     ) {
       if (el.isHovered !== true) el.isHovered = true;
