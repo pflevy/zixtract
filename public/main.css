@@ -1,12 +1,7 @@
 .header {
-  display: flex;
+  padding-top: 10px;
   background-color: red;
   height: 100px;
-}
-
-#imageInput {
-  position: fixed;
-  z-index: 99;
 }
 
 #currMousePos {

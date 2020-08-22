@@ -37,3 +37,18 @@ zixtractCanvas.addEventListener("mouseup", () => {
   canvas.style.cursor = "default";
   // applyTessereactToAll();
 });
+
+// Export elements position
+function exportTemplate() {
+  let dataStr = JSON.stringify(elements);
+  let dataUri =
+    "data:application/json;charset=utf-8," + encodeURIComponent(dataStr);
+
+  let exportFileDefaultName = "template.json";
+
+  let linkElement = document.createElement("a");
+  linkElement.setAttribute("href", dataUri);
+  linkElement.setAttribute("download", exportFileDefaultName);
+  linkElement.click();
+  linkElement.remove();
+}
