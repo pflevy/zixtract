@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  background-color: red;
+  height: 100px;
+}
+
+#imageInput {
+  position: fixed;
+  z-index: 99;
+}
+
+#currMousePos {
+  position: absolute;
+  top: 10;
+  right: 10;
+  user-select: none;
+}

@@ -4,8 +4,12 @@
       TCC - Paulo Levy - POC - Client-side Text Extraction from Selection
     </title>
     <script src="./rendering.js"></script>
+    <link rel="stylesheet" href="main.css" />
   </head>
   <body>
+    <div class="header">
+      <input type="file" id="imageInput" />
+    </div>
     <img
       crossorigin="anonymous"
       id="image"
@@ -14,7 +18,7 @@
     />
     <span
       id="currMousePos"
-      style="position: absolute; top: 10; left: 10; user-select: none;"
+      style="position: absolute; top: 10; right: 10; user-select: none;"
     ></span>
   </body>
   <script src="https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js"></script>
