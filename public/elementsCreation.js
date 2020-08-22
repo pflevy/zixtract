@@ -28,11 +28,12 @@ function functionUpdateNewestElement() {
   }
 }
 
-document.addEventListener("mousedown", newElement);
-document.addEventListener("mousemove", functionUpdateNewestElement);
-document.addEventListener("mouseup", () => {
+const zixtractCanvas = document.getElementById("zixtractCanvas");
+zixtractCanvas.addEventListener("mousedown", newElement);
+zixtractCanvas.addEventListener("mousemove", functionUpdateNewestElement);
+zixtractCanvas.addEventListener("mouseup", () => {
   isMouseDown = false;
   elements[elements.length - 1].isHovered = false;
   canvas.style.cursor = "default";
-  applyTessereactToAll();
+  // applyTessereactToAll();
 });

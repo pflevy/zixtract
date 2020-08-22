@@ -2,7 +2,7 @@ const DEFAULT_COLOR = "#808080";
 const DEFAULT_LINE_WIDTH = 2;
 
 // create canvas element and append it to document body
-var canvas = document.createElement("canvas");
+var canvas = document.getElementById("zixtractCanvas");
 document.body.appendChild(canvas);
 // some hotfixes...
 document.body.style.margin = 0;
