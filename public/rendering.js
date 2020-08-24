@@ -6,10 +6,12 @@ function renderElements() {
     // config
     ctx.setLineDash([10, 5]);
     ctx.lineWidth = DEFAULT_LINE_WIDTH;
+    ctx.font = `${DEFAULT_FONT_SIZE}px sans-serif`;
 
+    handleCloseButton(el);
     // Stroke borders for hovered el.
     if (el.isHovered) {
-      ctx.lineWidth = ctx.strokeStyle = "#21E0D7";
+      ctx.strokeStyle = "#21E0D7";
     } else ctx.strokeStyle = DEFAULT_COLOR;
 
     ctx.beginPath(); // begin
@@ -43,5 +45,23 @@ function createSelectionAdjustPoints(ctx, el) {
       ctx.stroke();
       ctx.closePath();
     }
+  }
+}
+
+function handleCloseButton(el) {
+  if (el.isHovered) {
+    const deleteNodeButton = document.createElement("button");
+    deleteNodeButton.style = `position: absolute; top: ${el.y0}; left: ${el.x0} `;
+    deleteNodeButton.id = `deleteNode-${el.id}`;
+    deleteNodeButton.innerHTML = "X";
+    deleteNodeButton.onclick = () => {
+      removeElement(el.id);
+      const deleteNodeButton = document.getElementById(`deleteNode-${el.id}`);
+      if (deleteNodeButton) deleteNodeButton.remove();
+    };
+    document.getElementById("zixtractCanvasDiv").appendChild(deleteNodeButton);
+  } else {
+    const deleteNodeButton = document.getElementById(`deleteNode-${el.id}`);
+    if (deleteNodeButton) deleteNodeButton.remove();
   }
 }
