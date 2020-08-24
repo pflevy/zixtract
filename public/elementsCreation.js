@@ -15,6 +15,7 @@ function newElement() {
     y0: currMousePosition.y,
     x1: currMousePosition.x,
     y1: currMousePosition.y,
+    id: elements.length + Math.random() * 100,
   };
   elements.push(newElement);
   selectedElementIndex = elements.length - 1;
@@ -51,4 +52,11 @@ function exportTemplate() {
   linkElement.setAttribute("download", exportFileDefaultName);
   linkElement.click();
   linkElement.remove();
+}
+
+function removeElement(id) {
+  const removeAt = elements.findIndex((el) => el.id === id);
+  elements.splice(removeAt, 1);
+
+  renderElements();
 }
