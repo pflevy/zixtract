@@ -1,12 +1,12 @@
 const DEFAULT_COLOR = "#808080";
 const DEFAULT_LINE_WIDTH = 2;
+const DEFAULT_FONT_SIZE = 12;
 
 // create canvas element and append it to document body
 var canvas = document.getElementById("zixtractCanvas");
 document.body.appendChild(canvas);
 // some hotfixes...
 document.body.style.margin = 0;
-canvas.style.position = "fixed";
 // get canvas 2D context and set him correct size
 var ctx = canvas.getContext("2d");
 // Default Line config
@@ -26,7 +26,7 @@ function handleMouseMove(e) {
   const anyElementHovered = elements.some((el) => {
     if (
       currMousePosition.x >= el.x0 &&
-      currMousePosition.y >= el.y0 &&
+      currMousePosition.y >= el.y0 - 10 - DEFAULT_FONT_SIZE && // Hover starts on text
       currMousePosition.x <= el.x1 &&
       currMousePosition.y <= el.y1 &&
       el.hasOwnProperty("isHovered")
@@ -50,8 +50,6 @@ function handleMouseMove(e) {
       stateAnyElementsHovered = false;
   }
 }
-
-// document.addEventListener("mouseenter", renderElements);
 
 window.onload = function () {
   renderElements();
