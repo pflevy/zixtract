@@ -1,6 +1,6 @@
 const DEFAULT_COLOR = "#808080";
 const DEFAULT_LINE_WIDTH = 2;
-const DEFAULT_FONT_SIZE = 12;
+const DEFAULT_FONT_SIZE = 16;
 
 // create canvas element and append it to document body
 var canvas = document.getElementById("zixtractCanvas");

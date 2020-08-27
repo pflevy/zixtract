@@ -9,6 +9,8 @@ function renderElements() {
     ctx.font = `${DEFAULT_FONT_SIZE}px sans-serif`;
 
     handleCloseButton(el);
+    handleVariableName(el);
+    handleVariableExtractedText(el);
     // Stroke borders for hovered el.
     if (el.isHovered) {
       ctx.strokeStyle = "#21E0D7";
@@ -18,8 +20,8 @@ function renderElements() {
     ctx.moveTo(el.x0, el.y0); // from
 
     // print variable name
-    ctx.fillStyle = "#000000";
-    ctx.fillText(`var${index}: ${el.extractedText}`, el.x0, el.y0 - 10);
+    // ctx.fillStyle = "#000000";
+    // ctx.fillText(`var${index}: ${el.extractedText}`, el.x0, el.y0 - 10);
 
     ctx.strokeRect(el.x0, el.y0, el.x1 - el.x0, el.y1 - el.y0);
     ctx.lineTo(el.x0, el.y0); // to
@@ -51,17 +53,75 @@ function createSelectionAdjustPoints(ctx, el) {
 function handleCloseButton(el) {
   if (el.isHovered) {
     const deleteNodeButton = document.createElement("button");
-    deleteNodeButton.style = `position: absolute; top: ${el.y0}; left: ${el.x0} `;
+    deleteNodeButton.style = `position: absolute; top: ${
+      el.y0 - 10 - DEFAULT_FONT_SIZE
+    }; left: ${el.x1 - 30} `;
     deleteNodeButton.id = `deleteNode-${el.id}`;
     deleteNodeButton.innerHTML = "X";
     deleteNodeButton.onclick = () => {
       removeElement(el.id);
       const deleteNodeButton = document.getElementById(`deleteNode-${el.id}`);
-      if (deleteNodeButton) deleteNodeButton.remove();
+      const variableNameText = document.getElementById(`variableName-${el.id}`);
+      const variableExtractedText = document.getElementById(
+        `variableExtractedText-${el.id}`
+      );
+      if (deleteNodeButton) {
+        deleteNodeButton.remove();
+        variableNameText.remove();
+        variableExtractedText.remove();
+      }
     };
     document.getElementById("zixtractCanvasDiv").appendChild(deleteNodeButton);
   } else {
     const deleteNodeButton = document.getElementById(`deleteNode-${el.id}`);
     if (deleteNodeButton) deleteNodeButton.remove();
+  }
+}
+
+function handleVariableName(el) {
+  const textAlreadyRendered = document.getElementById(`variableName-${el.id}`);
+  if (!textAlreadyRendered) {
+    const variableNameText = document.createElement("span");
+    variableNameText.style = `position: absolute; top: ${el.y0 - 20}; left: ${
+      el.x0
+    } `;
+    variableNameText.id = `variableName-${el.id}`;
+    variableNameText.innerHTML = `var-${el.id.toString().substring(0, 2)}`;
+    variableNameText.onclick = () => {
+      // removeElement(el.id);
+      // const variableNameText = document.getElementById(`deleteNode-${el.id}`);
+      // if (variableNameText) variableNameText.remove();
+      console.log("clicked");
+    };
+    document.getElementById("zixtractCanvasDiv").appendChild(variableNameText);
+  }
+}
+
+function removeAllVariableExtractedTextDisplay() {
+  const elements = document.querySelectorAll('*[id^="variableExtractedText-"]');
+  elements.forEach((el) => el.remove());
+}
+
+function handleVariableExtractedText(el) {
+  const textAlreadyRendered = document.getElementById(
+    `variableExtractedText-${el.id}`
+  );
+  if (!textAlreadyRendered) {
+    const variableNameText = document.createElement("span");
+    variableNameText.style = `position: absolute; top: ${el.y0 - 40}; left: ${
+      el.x0
+    } `;
+    variableNameText.id = `variableExtractedText-${el.id}`;
+    variableNameText.innerHTML = `${el.extractedText}`;
+    variableNameText.onclick = () => {
+      // removeElement(el.id);
+      // const variableNameText = document.getElementById(`deleteNode-${el.id}`);
+      // if (variableNameText) variableNameText.remove();
+      console.log("clicked");
+    };
+    if (el.extractedText)
+      document
+        .getElementById("zixtractCanvasDiv")
+        .appendChild(variableNameText);
   }
 }

@@ -48,6 +48,7 @@ function retrieveTextFromSelection(data, filename = "untitled.jpeg", index) {
       data: { text },
     } = await worker.recognize(data);
     elements[index].extractedText = text;
+    removeAllVariableExtractedTextDisplay(); // To update variable names with the extracted text, they must first be deleted.
     renderElements();
     await worker.terminate();
   })();
