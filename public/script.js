@@ -24,33 +24,19 @@ document.addEventListener("mousemove", handleMouseMove);
 let stateAnyElementsHovered = false;
 function handleMouseMove(e) {
   const anyElementHovered = elements.some((el) => {
-    if (
-      currMousePosition.x >= el.x0 &&
-      currMousePosition.y >= el.y0 - 10 - DEFAULT_FONT_SIZE && // Hover starts on text
-      currMousePosition.x <= el.x1 &&
-      currMousePosition.y <= el.y1 &&
-      el.hasOwnProperty("isHovered")
-    ) {
-      if (el.isHovered !== true) el.isHovered = true;
-      return true;
-    } else if (el.hasOwnProperty("isHovered")) {
-      if (el.isHovered !== false) el.isHovered = false;
-    }
+    if (el.isMouseHovering() === true) return true;
   });
-
   // Render only if state of elements hovered changes.
-  if (stateAnyElementsHovered === !anyElementHovered) renderElements();
+  if (stateAnyElementsHovered === !anyElementHovered) renderAllElements();
   if (anyElementHovered) {
-    // canvas.style.cursor = "crosshair";
     if (stateAnyElementsHovered !== anyElementHovered)
       stateAnyElementsHovered = true;
   } else {
-    // canvas.style.cursor = "default";
     if (stateAnyElementsHovered !== anyElementHovered)
       stateAnyElementsHovered = false;
   }
 }
 
 window.onload = function () {
-  renderElements();
+  renderAllElements();
 };

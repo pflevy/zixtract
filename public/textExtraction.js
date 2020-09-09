@@ -5,7 +5,7 @@ function applyTessereactToAll() {
     if (el.extractedText === undefined) {
       el.extractedText = "loading...";
       cropElementSelection(el, i);
-      renderElements();
+      renderAllElements();
     }
   });
 }
@@ -49,7 +49,7 @@ function retrieveTextFromSelection(data, filename = "untitled.jpeg", index) {
     } = await worker.recognize(data);
     elements[index].extractedText = text;
     removeAllVariableExtractedTextDisplay(); // To update variable names with the extracted text, they must first be deleted.
-    renderElements();
+    renderAllElements();
     await worker.terminate();
   })();
 
