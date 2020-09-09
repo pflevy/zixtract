@@ -10,22 +10,25 @@ function newElement() {
   canvas.style.cursor = "crosshair";
 
   isMouseDown = true;
-  const newElement = {
+  const newElement = new SelectionElement({
     x0: currMousePosition.x,
     y0: currMousePosition.y,
     x1: currMousePosition.x,
     y1: currMousePosition.y,
     id: elements.length + Math.random() * 100,
-  };
+  });
+  newElement.getElementPositioning();
   elements.push(newElement);
   selectedElementIndex = elements.length - 1;
 }
 
 function functionUpdateNewestElement() {
   if (isMouseDown) {
-    elements[elements.length - 1].x1 = currMousePosition.x;
-    elements[elements.length - 1].y1 = currMousePosition.y;
-    renderElements();
+    elements[elements.length - 1].updatePositioning({
+      x1: currMousePosition.x,
+      y1: currMousePosition.y,
+    });
+    renderAllElements();
   }
 }
 
@@ -34,9 +37,14 @@ zixtractCanvas.addEventListener("mousedown", newElement);
 zixtractCanvas.addEventListener("mousemove", functionUpdateNewestElement);
 zixtractCanvas.addEventListener("mouseup", () => {
   isMouseDown = false;
-  elements[elements.length - 1].isHovered = false;
+  const element = elements[elements.length - 1];
+  const { width, height } = element.getElementPositioning();
+  // removes the element if too small
+  // IMPORTANT -- This logic only considers the last element inserted, as it's the only updatable so far
+  if (width < 15 || height < 15) elements.pop();
+  element.setIsHovered(false);
+  element.endUpdatePositioning();
   canvas.style.cursor = "default";
-  // applyTessereactToAll();
 });
 
 // Export elements position
@@ -58,5 +66,5 @@ function removeElement(id) {
   const removeAt = elements.findIndex((el) => el.id === id);
   elements.splice(removeAt, 1);
 
-  renderElements();
+  renderAllElements();
 }
