@@ -62,6 +62,19 @@ function exportTemplate() {
   linkElement.remove();
 }
 
+// Import elements position
+document.getElementById("importTemplate").onchange = function (e) {
+  var reader = new FileReader();
+  reader.onload = () => {
+    const jsonData = JSON.parse(event.target.result);
+    console.log(jsonData);
+    elements.splice(0, elements.length);
+    jsonData.forEach((el) => elements.push(new SelectionElement(el)));
+    renderAllElements();
+  };
+  reader.readAsText(this.files[0]);
+};
+
 function removeElement(id) {
   const removeAt = elements.findIndex((el) => el.id === id);
   elements.splice(removeAt, 1);
