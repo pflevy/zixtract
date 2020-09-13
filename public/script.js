@@ -17,6 +17,7 @@ window.addEventListener("resize", resize);
 function resize() {
   ctx.canvas.width = window.innerWidth;
   ctx.canvas.height = window.innerHeight;
+  renderAllElements();
 }
 resize();
 
