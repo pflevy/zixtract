@@ -8,10 +8,22 @@
   </head>
   <body>
     <div class="header">
-      <input type="file" id="imageInput" />
-      <button onclick="applyTessereactToAll()">Text Extract</button>
+      <button
+        id="imageInputLabel"
+        onclick="document.getElementById('imageInput').click();"
+      >
+        Import image
+      </button>
+      <input type="file" style="display: none" id="imageInput" />
+      <button onclick="applyTessereactToAll()">Extract Text</button>
       <button onclick="exportTemplate()">Export template</button>
-      <input type="file" id="importTemplate" />
+      <button
+        id="importTemplateLabel"
+        onclick="document.getElementById('importTemplate').click();"
+      >
+        Import Template
+      </button>
+      <input type="file" style="display: none" id="importTemplate" />
     </div>
     <img
       crossorigin="anonymous"
