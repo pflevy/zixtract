@@ -1,7 +1,13 @@
 .header {
+  padding: 10;
   padding-top: 10px;
-  background-color: red;
+  background-color: rgb(238, 238, 238);
   height: 100px;
+  display: flex;
+  align-items: baseline;
+}
+.header button {
+  margin: 0px 10px;
 }
 body {
   margin: 0;
@@ -9,11 +15,19 @@ body {
   overflow: hidden;
 }
 .rightSide {
+  padding: 10;
   position: fixed;
   right: 0;
-  width: 300px;
+  width: 400px;
   height: 100%;
-  background-color: blue;
+  background-color: rgb(245, 245, 245);
+  display: flex;
+  flex-flow: column;
+}
+
+.rightSideTopMenu {
+}
+.rightSideContent {
 }
 
 #currMousePos {
