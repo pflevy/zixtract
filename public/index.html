@@ -4,26 +4,45 @@
       TCC - Paulo Levy - POC - Client-side Text Extraction from Selection
     </title>
     <script src="./rendering.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="main.css" />
   </head>
   <body>
     <div class="header">
+      <h2>Zixtract</h2>
       <button
+        class="btn btn-primary"
         id="imageInputLabel"
         onclick="document.getElementById('imageInput').click();"
       >
         Import image
       </button>
       <input type="file" style="display: none" id="imageInput" />
-      <button onclick="applyTessereactToAll()">Extract Text</button>
-      <button onclick="exportTemplate()">Export template</button>
+      <button class="btn btn-success" onclick="applyTessereactToAll()">
+        Extract Text
+      </button>
+      <button class="btn btn-secondary" onclick="exportTemplate()">
+        Export template
+      </button>
       <button
+        class="btn btn-secondary"
         id="importTemplateLabel"
         onclick="document.getElementById('importTemplate').click();"
       >
         Import Template
       </button>
       <input type="file" style="display: none" id="importTemplate" />
+    </div>
+    <div class="rightSide">
+      <div class="rightSideTopMenu">
+        <button class="btn btn-warning" id="newRule">New rule</button>
+      </div>
+      <div class="rightSideContent"></div>
     </div>
     <img
       crossorigin="anonymous"
@@ -44,4 +63,5 @@
   <script src="./rendering.js"></script>
   <script src="./script.js"></script>
   <script src="./SelectionElement.js"></script>
+  <script src="./conditionalRules.js"></script>
 </html>
