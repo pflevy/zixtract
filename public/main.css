@@ -3,6 +3,18 @@
   background-color: red;
   height: 100px;
 }
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+.rightSide {
+  position: fixed;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background-color: blue;
+}
 
 #currMousePos {
   position: absolute;
