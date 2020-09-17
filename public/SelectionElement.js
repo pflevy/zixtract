@@ -106,11 +106,12 @@ function handleCloseButton(el) {
   const { width, startingX, startingY } = el.getElementPositioning();
   if (el.isHovered) {
     const deleteNodeButton = document.createElement("button");
-    deleteNodeButton.style = `position: absolute; top: ${
-      startingY - 10 - DEFAULT_FONT_SIZE
-    }; left: ${startingX + width - 30} `;
+    deleteNodeButton.setAttribute("class", "btn btn-danger btn-sm");
+    deleteNodeButton.style = `font-size: 12px; padding-top: 0;height:18px; position: absolute; top: ${
+      startingY - 10 - DEFAULT_FONT_SIZE + 3
+    }; left: ${startingX + width - 30 - 30} `;
     deleteNodeButton.id = `deleteNode-${el.id}`;
-    deleteNodeButton.innerHTML = "X";
+    deleteNodeButton.innerHTML = "delete";
     deleteNodeButton.onclick = () => {
       removeElement(el.id);
       const deleteNodeButton = document.getElementById(`deleteNode-${el.id}`);
