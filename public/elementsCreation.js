@@ -47,6 +47,22 @@ zixtractCanvas.addEventListener("mouseup", () => {
   canvas.style.cursor = "default";
 });
 
+// Export elements data
+function exportData() {
+  const newElements = elements.map((el) => ({ [el.id]: el.extractedText }));
+  let dataStr = JSON.stringify(newElements);
+  let dataUri =
+    "data:application/json;charset=utf-8," + encodeURIComponent(dataStr);
+
+  let exportFileDefaultName = "data.json";
+
+  let linkElement = document.createElement("a");
+  linkElement.setAttribute("href", dataUri);
+  linkElement.setAttribute("download", exportFileDefaultName);
+  linkElement.click();
+  linkElement.remove();
+}
+
 // Export elements position
 function exportTemplate() {
   let dataStr = JSON.stringify(elements);
