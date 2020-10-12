@@ -78,5 +78,5 @@ var ChangeVariableName = function ChangeVariableName() {
   );
 };
 
-var domContainer = document.getElementById("rightSide");
-ReactDOM.render(e(ChangeVariableName), domContainer);
+// const domContainer = document.getElementById("rightSide");
+// ReactDOM.render(e(ChangeVariableName), domContainer);
