@@ -14,7 +14,7 @@ const Menu = () => {
     >
       <h2>Settings</h2>
       <button
-        className="btn btn-light"
+        className="btn btn-primary"
         onClick={() => {
           ReactDOM.render(e(ChangeVariableName), domContainer);
         }}

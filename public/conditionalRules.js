@@ -23,6 +23,15 @@ const ConditionalRules = () => {
   return (
     <div>
       <button
+        className="btn btn-link"
+        onClick={() => {
+          ReactDOM.render(e(Menu), domContainer);
+        }}
+      >
+        return to settings
+      </button>
+      <h4>Create conditional rules</h4>
+      <button
         className="btn btn-warning"
         disabled={newRuleCompareTo !== undefined}
         onClick={() => setNewRuleCompareTo({})}
@@ -44,7 +53,7 @@ const ConditionalRules = () => {
           <select>
             {elements.map((el) => (
               <option key={el.id} value={el.extractedText}>
-                {el.id}
+                {el.name || el.id}
               </option>
             ))}
           </select>
@@ -66,4 +75,3 @@ const ConditionalRules = () => {
     </div>
   );
 };
-

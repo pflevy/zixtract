@@ -16,7 +16,6 @@ var ChangeVariableName = function ChangeVariableName() {
       inputsText = _React$useState4[0],
       setInputsText = _React$useState4[1];
 
-  console.log("inputsText", inputsText);
   function reloadReact() {
     doReload(reload + 1);
   }
@@ -24,27 +23,39 @@ var ChangeVariableName = function ChangeVariableName() {
     "div",
     null,
     React.createElement(
-      "h2",
+      "button",
+      {
+        className: "btn btn-link",
+        onClick: function onClick() {
+          ReactDOM.render(e(Menu), domContainer);
+        }
+      },
+      "return to settings"
+    ),
+    React.createElement(
+      "h4",
       null,
       "Change variable names"
     ),
     React.createElement(
       "button",
-      { onClick: function onClick() {
+      {
+        className: "btn btn-outline-primary btn-sm",
+        onClick: function onClick() {
           return reloadReact();
-        } },
-      " reload "
+        }
+      },
+      "Reload variables"
     ),
     React.createElement("hr", null),
-    elements.map(function (el) {
+    elements.length > 0 ? elements.map(function (el) {
       return React.createElement(
         "div",
         null,
         React.createElement(
           "p",
           null,
-          " ",
-          "rename",
+          "From",
           " ",
           React.createElement(
             "strong",
@@ -53,15 +64,18 @@ var ChangeVariableName = function ChangeVariableName() {
           ),
           " ",
           "to",
+          " ",
           React.createElement("input", {
             value: inputsText[el.id],
             onChange: function onChange(e) {
               return setInputsText(Object.assign({}, inputsText, _defineProperty({}, el.id, e.target.value)));
             }
           }),
+          " ",
           React.createElement(
             "button",
             {
+              "class": "btn btn-warning btn-sm",
               onClick: function onClick() {
                 el.name = inputsText[el.id];
                 var prevTextRendered = document.getElementById("variableName-" + el.id);
@@ -70,11 +84,17 @@ var ChangeVariableName = function ChangeVariableName() {
                 reloadReact();
               }
             },
-            "rename"
+            "rename!"
           )
         )
       );
-    })
+    }) : React.createElement(
+      "span",
+      null,
+      "It seems like there's no selection made on the image...",
+      React.createElement("br", null),
+      "If you did make a selection, please hit \"Reload variables\""
+    )
   );
 };
 
