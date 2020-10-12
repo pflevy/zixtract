@@ -16,12 +16,12 @@ jobs:
       - name: Archive Production Artifact
         uses: actions/upload-artifact@v2
         with:
-            name: public
+            name: production
             path: prod
       - name: Download Artifact
         uses: actions/download-artifact@master
         with:
-          name: public
+          name: production
           path: prod
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
