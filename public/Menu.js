@@ -10,7 +10,7 @@ const Menu = () => {
           ReactDOM.render(e(ChangeVariableName), domContainer);
         }}
       >
-        Change Variables Name
+        Change Variable Names
       </button>
 
       <button

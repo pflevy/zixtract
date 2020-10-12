@@ -26,7 +26,7 @@ var ChangeVariableName = function ChangeVariableName() {
     React.createElement(
       "h2",
       null,
-      "Change variable name"
+      "Change variable names"
     ),
     React.createElement(
       "button",

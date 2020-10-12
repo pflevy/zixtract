@@ -10,7 +10,7 @@ const ChangeVariableName = () => {
   }
   return (
     <div>
-      <h2>Change variable name</h2>
+      <h2>Change variable names</h2>
       <button onClick={() => reloadReact()}> reload </button>
       <hr></hr>
       {elements.map((el) => (
