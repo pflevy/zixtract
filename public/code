@@ -1,0 +1,1 @@
+npx babel --watch public --out-dir prod --ignore public/textExtraction.js --presets react-app/prod
