@@ -4,8 +4,17 @@ const domContainer = document.getElementById("rightSide");
 
 const Menu = () => {
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexFlow: "column",
+        height: "150px",
+        justifyContent: "space-between",
+      }}
+    >
+      <h2>Settings</h2>
       <button
+        className="btn btn-light"
         onClick={() => {
           ReactDOM.render(e(ChangeVariableName), domContainer);
         }}
@@ -14,6 +23,7 @@ const Menu = () => {
       </button>
 
       <button
+        className="btn btn-warning"
         onClick={() => {
           ReactDOM.render(e(ConditionalRules), domContainer);
         }}

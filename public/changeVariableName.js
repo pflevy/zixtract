@@ -48,5 +48,5 @@ const ChangeVariableName = () => {
   );
 };
 
-const domContainer = document.getElementById("rightSide");
-ReactDOM.render(e(ChangeVariableName), domContainer);
+// const domContainer = document.getElementById("rightSide");
+// ReactDOM.render(e(ChangeVariableName), domContainer);

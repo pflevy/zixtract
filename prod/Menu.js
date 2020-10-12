@@ -5,10 +5,23 @@ var domContainer = document.getElementById("rightSide");
 var Menu = function Menu() {
   return React.createElement(
     "div",
-    null,
+    {
+      style: {
+        display: "flex",
+        flexFlow: "column",
+        height: "150px",
+        justifyContent: "space-between"
+      }
+    },
+    React.createElement(
+      "h2",
+      null,
+      "Settings"
+    ),
     React.createElement(
       "button",
       {
+        className: "btn btn-light",
         onClick: function onClick() {
           ReactDOM.render(e(ChangeVariableName), domContainer);
         }
@@ -18,6 +31,7 @@ var Menu = function Menu() {
     React.createElement(
       "button",
       {
+        className: "btn btn-warning",
         onClick: function onClick() {
           ReactDOM.render(e(ConditionalRules), domContainer);
         }
