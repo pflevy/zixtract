@@ -23,8 +23,6 @@ jobs:
         with:
           name: prod
           path: prod
-      - name: Obfuscate-Javascript
-        uses: florrdv/JS-Obfuscator@v1.0.2
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
