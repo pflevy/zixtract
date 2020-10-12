@@ -1,3 +1,5 @@
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var elements = [
   // { x0: 50, y0: 100, x1: 80, y1: 140, isHovered: false },
   // { x0: 200, y0: 200, x1: 280, y1: 240, isHovered: false },
@@ -51,6 +53,23 @@ zixtractCanvas.addEventListener("mouseup", function () {
   element.endUpdatePositioning();
   canvas.style.cursor = "default";
 });
+
+// Export elements data
+function exportData() {
+  var newElements = elements.map(function (el) {
+    return _defineProperty({}, el.id, el.extractedText);
+  });
+  var dataStr = JSON.stringify(newElements);
+  var dataUri = "data:application/json;charset=utf-8," + encodeURIComponent(dataStr);
+
+  var exportFileDefaultName = "data.json";
+
+  var linkElement = document.createElement("a");
+  linkElement.setAttribute("href", dataUri);
+  linkElement.setAttribute("download", exportFileDefaultName);
+  linkElement.click();
+  linkElement.remove();
+}
 
 // Export elements position
 function exportTemplate() {

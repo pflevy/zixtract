@@ -13,7 +13,7 @@ var Menu = function Menu() {
           ReactDOM.render(e(ChangeVariableName), domContainer);
         }
       },
-      "Change Variables Name"
+      "Change Variable Names"
     ),
     React.createElement(
       "button",

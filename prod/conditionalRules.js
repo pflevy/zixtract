@@ -120,6 +120,3 @@ var ConditionalRules = function ConditionalRules() {
     )
   );
 };
-
-// const domContainer = document.getElementById("rightSide");
-// ReactDOM.render(e(ConditionalRules), domContainer);
