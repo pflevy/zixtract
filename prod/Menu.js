@@ -21,7 +21,7 @@ var Menu = function Menu() {
     React.createElement(
       "button",
       {
-        className: "btn btn-light",
+        className: "btn btn-primary",
         onClick: function onClick() {
           ReactDOM.render(e(ChangeVariableName), domContainer);
         }

@@ -134,7 +134,6 @@ function handleCloseButton(el) {
 }
 
 function handleVariableName(el) {
-  console.log(el);
   const { width, startingX, startingY } = el.getElementPositioning();
   const textAlreadyRendered = document.getElementById(`variableName-${el.id}`);
   if (!textAlreadyRendered) {

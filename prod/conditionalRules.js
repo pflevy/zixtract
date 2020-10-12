@@ -33,6 +33,21 @@ var ConditionalRules = function ConditionalRules() {
     React.createElement(
       "button",
       {
+        className: "btn btn-link",
+        onClick: function onClick() {
+          ReactDOM.render(e(Menu), domContainer);
+        }
+      },
+      "return to settings"
+    ),
+    React.createElement(
+      "h4",
+      null,
+      "Create conditional rules"
+    ),
+    React.createElement(
+      "button",
+      {
         className: "btn btn-warning",
         disabled: newRuleCompareTo !== undefined,
         onClick: function onClick() {
@@ -64,7 +79,7 @@ var ConditionalRules = function ConditionalRules() {
           return React.createElement(
             "option",
             { key: el.id, value: el.extractedText },
-            el.id
+            el.name || el.id
           );
         })
       ),

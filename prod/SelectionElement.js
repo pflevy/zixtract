@@ -159,8 +159,6 @@ function handleCloseButton(el) {
 }
 
 function handleVariableName(el) {
-  console.log(el);
-
   var _el$getElementPositio2 = el.getElementPositioning(),
       width = _el$getElementPositio2.width,
       startingX = _el$getElementPositio2.startingX,
