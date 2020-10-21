@@ -5,7 +5,9 @@
   "main": "index.js",
   "dependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-react-app": "^3.1.2"
+    "babel-preset-react-app": "^3.1.2",
+    "file-saver": "^2.0.2",
+    "xlsx": "^0.16.8"
   },
   "devDependencies": {},
   "scripts": {

@@ -71,6 +71,26 @@ function exportData() {
   linkElement.remove();
 }
 
+// Export elements data as CSV
+function exportDataAsCSV() {
+  var csvContent = '';
+  // Columns, from element's variable name
+  elements.forEach(function (el) {
+    return csvContent = csvContent + el.name + ',';
+  });
+  csvContent += "\n";
+  // Columns, from element's extracted text
+  elements.forEach(function (el) {
+    return csvContent = csvContent + el.extractedText.replace(/(\r\n|\n|\r)/gm, "") + ",";
+  });
+
+  var linkElement = window.document.createElement("a");
+  linkElement.setAttribute("href", "data:text/csv;charset=utf-8," + encodeURI(csvContent));
+  linkElement.setAttribute("download", "upload_data.csv");
+  linkElement.click();
+  linkElement.remove();
+}
+
 // Export elements position
 function exportTemplate() {
   var dataStr = JSON.stringify(elements);
