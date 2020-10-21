@@ -24,7 +24,7 @@ jobs:
           name: prod
           path: prod
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
+        uses: pflevy/firebase-action@master
         with:
           args: deploy --only hosting:zixtract
         env:
