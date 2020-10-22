@@ -2,6 +2,11 @@
 const e = React.createElement;
 
 const ConditionalRules = () => {
+  const [reload, doReload] = React.useState(0);
+  function reloadReact() {
+    doReload(reload + 1);
+  }
+
   const [rules, setRules] = React.useState([]);
   const [newRuleCompareTo, setNewRuleCompareTo] = React.useState(undefined);
 
@@ -31,6 +36,14 @@ const ConditionalRules = () => {
         return to settings
       </button>
       <h4>Create conditional rules</h4>
+   <div style={{display:'flex', flexFlow: 'column'}}>
+   <button
+        className="btn btn-outline-primary btn-sm"
+        onClick={() => reloadReact()}
+        style={{marginBottom: '5px'}}
+      >
+        Reload variables
+      </button>
       <button
         className="btn btn-warning"
         disabled={newRuleCompareTo !== undefined}
@@ -38,6 +51,7 @@ const ConditionalRules = () => {
       >
         New rule
       </button>
+   </div>
       {true && (
         <div key={Math.random() * 100}>
           <hr />
@@ -50,7 +64,7 @@ const ConditionalRules = () => {
           </span>
           <br />
           If{" "}
-          <select>
+          <select class="form-control">
             {elements.map((el) => (
               <option key={el.id} value={el.extractedText}>
                 {el.name || el.id}

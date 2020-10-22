@@ -6,15 +6,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var e = React.createElement;
 
 var ChangeVariableName = function ChangeVariableName() {
-  var _React$useState = React.useState(0),
+  var _React$useState = React.useState({}),
       _React$useState2 = _slicedToArray(_React$useState, 2),
-      reload = _React$useState2[0],
-      doReload = _React$useState2[1];
+      inputsText = _React$useState2[0],
+      setInputsText = _React$useState2[1];
 
-  var _React$useState3 = React.useState({}),
+  var _React$useState3 = React.useState(0),
       _React$useState4 = _slicedToArray(_React$useState3, 2),
-      inputsText = _React$useState4[0],
-      setInputsText = _React$useState4[1];
+      reload = _React$useState4[0],
+      doReload = _React$useState4[1];
 
   function reloadReact() {
     doReload(reload + 1);
@@ -38,14 +38,18 @@ var ChangeVariableName = function ChangeVariableName() {
       "Change variable names"
     ),
     React.createElement(
-      "button",
-      {
-        className: "btn btn-outline-primary btn-sm",
-        onClick: function onClick() {
-          return reloadReact();
-        }
-      },
-      "Reload variables"
+      "div",
+      { style: { display: 'flex', flexFlow: 'column' } },
+      React.createElement(
+        "button",
+        {
+          className: "btn btn-outline-primary btn-sm",
+          onClick: function onClick() {
+            return reloadReact();
+          }
+        },
+        "Reload variables"
+      )
     ),
     React.createElement("hr", null),
     elements.length > 0 ? elements.map(function (el) {

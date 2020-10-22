@@ -4,15 +4,24 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 var e = React.createElement;
 
 var ConditionalRules = function ConditionalRules() {
-  var _React$useState = React.useState([]),
+  var _React$useState = React.useState(0),
       _React$useState2 = _slicedToArray(_React$useState, 2),
-      rules = _React$useState2[0],
-      setRules = _React$useState2[1];
+      reload = _React$useState2[0],
+      doReload = _React$useState2[1];
 
-  var _React$useState3 = React.useState(undefined),
+  function reloadReact() {
+    doReload(reload + 1);
+  }
+
+  var _React$useState3 = React.useState([]),
       _React$useState4 = _slicedToArray(_React$useState3, 2),
-      newRuleCompareTo = _React$useState4[0],
-      setNewRuleCompareTo = _React$useState4[1];
+      rules = _React$useState4[0],
+      setRules = _React$useState4[1];
+
+  var _React$useState5 = React.useState(undefined),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      newRuleCompareTo = _React$useState6[0],
+      setNewRuleCompareTo = _React$useState6[1];
 
   React.useEffect(function () {
     // console.log(elements);
@@ -46,15 +55,30 @@ var ConditionalRules = function ConditionalRules() {
       "Create conditional rules"
     ),
     React.createElement(
-      "button",
-      {
-        className: "btn btn-warning",
-        disabled: newRuleCompareTo !== undefined,
-        onClick: function onClick() {
-          return setNewRuleCompareTo({});
-        }
-      },
-      "New rule"
+      "div",
+      { style: { display: 'flex', flexFlow: 'column' } },
+      React.createElement(
+        "button",
+        {
+          className: "btn btn-outline-primary btn-sm",
+          onClick: function onClick() {
+            return reloadReact();
+          },
+          style: { marginBottom: '5px' }
+        },
+        "Reload variables"
+      ),
+      React.createElement(
+        "button",
+        {
+          className: "btn btn-warning",
+          disabled: newRuleCompareTo !== undefined,
+          onClick: function onClick() {
+            return setNewRuleCompareTo({});
+          }
+        },
+        "New rule"
+      )
     ),
     true && React.createElement(
       "div",
@@ -74,7 +98,7 @@ var ConditionalRules = function ConditionalRules() {
       " ",
       React.createElement(
         "select",
-        null,
+        { "class": "form-control" },
         elements.map(function (el) {
           return React.createElement(
             "option",

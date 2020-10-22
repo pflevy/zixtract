@@ -2,8 +2,8 @@
 const e = React.createElement;
 
 const ChangeVariableName = () => {
-  const [reload, doReload] = React.useState(0);
   const [inputsText, setInputsText] = React.useState({});
+  const [reload, doReload] = React.useState(0);
   function reloadReact() {
     doReload(reload + 1);
   }
@@ -18,12 +18,14 @@ const ChangeVariableName = () => {
         return to settings
       </button>
       <h4>Change variable names</h4>
+      <div style={{display:'flex', flexFlow: 'column'}}>
       <button
         className="btn btn-outline-primary btn-sm"
         onClick={() => reloadReact()}
       >
         Reload variables
       </button>
+      </div>
       <hr></hr>
       {elements.length > 0 ? (
         elements.map((el) => (
