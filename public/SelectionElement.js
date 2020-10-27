@@ -141,7 +141,7 @@ function handleVariableName(el) {
     const variableNameText = document.createElement("span");
     variableNameText.style = `position: absolute; top: ${
       startingY - 20
-    }; left: ${startingX} `;
+    }; left: ${startingX} ;   font-weight: bold;`;
     variableNameText.id = `variableName-${el.id}`;
     variableNameText.innerHTML =
       el.name || `var-${el.id.toString().substring(0, 2)}`;

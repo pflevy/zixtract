@@ -169,7 +169,7 @@ function handleVariableName(el) {
   var textAlreadyRendered = document.getElementById("variableName-" + el.id);
   if (!textAlreadyRendered) {
     var variableNameText = document.createElement("span");
-    variableNameText.style = "position: absolute; top: " + (startingY - 20) + "; left: " + startingX + " ";
+    variableNameText.style = "position: absolute; top: " + (startingY - 20) + "; left: " + startingX + " ;   font-weight: bold;";
     variableNameText.id = "variableName-" + el.id;
     variableNameText.innerHTML = el.name || "var-" + el.id.toString().substring(0, 2);
     variableNameText.onclick = function () {

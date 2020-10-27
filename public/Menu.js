@@ -3,6 +3,10 @@ const e = React.createElement;
 const domContainer = document.getElementById("rightSide");
 
 const Menu = () => {
+  const [reload, doReload] = React.useState(0);
+  function reloadReact() {
+    doReload(reload + 1);
+  }
   return (
     <div
       style={{
@@ -18,6 +22,7 @@ const Menu = () => {
         onClick={() => {
           ReactDOM.render(e(ChangeVariableName), domContainer);
         }}
+        style={{ marginBottom: "5px" }}
       >
         Change Variable Names
       </button>
@@ -29,16 +34,33 @@ const Menu = () => {
       >
         Set Rules{" "}
       </button>
-      table
+      <br />
+      <h3>Sheet</h3>
+      <button
+        className="btn btn-outline-primary btn-sm"
+        onClick={() => reloadReact()}
+      >
+        Reload table
+      </button>
+      <br />
       <table>
-        {elements.map((el) => {
-          console.log(el);
-          return <th>{el.name || el.id.toString().slice(0, 4)}</th>;
-        })}
+        <thead>
+          <tr>
+            {elements.map((el, idx) => {
+              return (
+                <th style={{ width: idx === 0 ? "30%" : "auto" }}>
+                  {el.name || el.id.toString().slice(0, 4)}
+                </th>
+              );
+            })}
+          </tr>
+        </thead>
         <tbody>
-          {elements.map((el) => {
-            return <td>{el.extractedText}</td>;
-          })}
+          <tr>
+            {elements.map((el) => {
+              return <td>{el.extractedText}</td>;
+            })}
+          </tr>
         </tbody>
       </table>
     </div>

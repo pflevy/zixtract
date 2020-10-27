@@ -39,7 +39,7 @@ var ChangeVariableName = function ChangeVariableName() {
     ),
     React.createElement(
       "div",
-      { style: { display: 'flex', flexFlow: 'column' } },
+      { style: { display: "flex", flexFlow: "column" } },
       React.createElement(
         "button",
         {
@@ -90,7 +90,8 @@ var ChangeVariableName = function ChangeVariableName() {
             },
             "rename!"
           )
-        )
+        ),
+        React.createElement("hr", null)
       );
     }) : React.createElement(
       "span",

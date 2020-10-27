@@ -18,13 +18,13 @@ const ChangeVariableName = () => {
         return to settings
       </button>
       <h4>Change variable names</h4>
-      <div style={{display:'flex', flexFlow: 'column'}}>
-      <button
-        className="btn btn-outline-primary btn-sm"
-        onClick={() => reloadReact()}
-      >
-        Reload variables
-      </button>
+      <div style={{ display: "flex", flexFlow: "column" }}>
+        <button
+          className="btn btn-outline-primary btn-sm"
+          onClick={() => reloadReact()}
+        >
+          Reload variables
+        </button>
       </div>
       <hr></hr>
       {elements.length > 0 ? (
@@ -57,6 +57,7 @@ const ChangeVariableName = () => {
                 rename!
               </button>
             </p>
+            <hr />
           </div>
         ))
       ) : (
