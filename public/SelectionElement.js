@@ -1,12 +1,13 @@
 class SelectionElement {
   constructor(props) {
-    const { x0, x1, y0, y1, id, name } = props;
+    const { x0, x1, y0, y1, id, name, extractedText } = props;
     this.x0 = x0;
     this.x1 = x1;
     this.y0 = y0;
     this.y1 = y1;
     this.id = id;
     this.name = name;
+    this.extractedText = extractedText;
   }
 
   setIsHovered(boolean) {

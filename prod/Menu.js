@@ -38,6 +38,30 @@ var Menu = function Menu() {
       },
       "Set Rules",
       " "
+    ),
+    "table",
+    React.createElement(
+      "table",
+      null,
+      elements.map(function (el) {
+        console.log(el);
+        return React.createElement(
+          "th",
+          null,
+          el.name || el.id.toString().slice(0, 4)
+        );
+      }),
+      React.createElement(
+        "tbody",
+        null,
+        elements.map(function (el) {
+          return React.createElement(
+            "td",
+            null,
+            el.extractedText
+          );
+        })
+      )
     )
   );
 };

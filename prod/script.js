@@ -37,5 +37,6 @@ function handleMouseMove(e) {
 }
 
 window.onload = function () {
+  setDefaultElements();
   renderAllElements();
 };

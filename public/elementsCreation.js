@@ -6,6 +6,57 @@ const elements = [
 let isMouseDown = false;
 let selectedElementIndex = null; // WIP
 
+function setDefaultElements() {
+  const desiredElements = [
+    {
+      x0: 153,
+      x1: 607,
+      y0: 75,
+      y1: 133,
+      id: 51.199362531599114,
+      name: "Title",
+      isUpdatingPosition: false,
+      isHovered: false,
+      extractedText: "CAIXAS ELETRONICOS SANTANDER\nTRANSFERENCIA DE VALORES\n",
+    },
+    {
+      x0: 23,
+      x1: 145,
+      y0: 287,
+      y1: 318,
+      id: 20.3152675314453,
+      name: "Payment Method",
+      isUpdatingPosition: false,
+      isHovered: false,
+      extractedText: "DEBITO:\n",
+    },
+    {
+      x0: 603,
+      x1: 747,
+      y0: 425,
+      y1: 471,
+      id: 75.7560308139852,
+      name: "Price",
+      isUpdatingPosition: false,
+      isHovered: false,
+      extractedText: "2. 000, 00\n",
+    },
+  ];
+  desiredElements.forEach((desiredEl) => {
+    const newEl = new SelectionElement({
+      x0: desiredEl.x0,
+      x1: desiredEl.x1,
+      y0: desiredEl.y0,
+      y1: desiredEl.y1,
+      id: desiredEl.id,
+      name: desiredEl.name,
+      extractedText: desiredEl.extractedText,
+    });
+    elements.push(newEl);
+    console.log(elements);
+  });
+}
+
 function newElement() {
   canvas.style.cursor = "crosshair";
 
@@ -65,15 +116,22 @@ function exportData() {
 
 // Export elements data as CSV
 function exportDataAsCSV() {
-  let csvContent = ''
+  let csvContent = "";
   // Columns, from element's variable name
-  elements.forEach((el) => ( csvContent = csvContent + el.name + ','));
-  csvContent += "\n"
+  elements.forEach((el) => (csvContent = csvContent + el.name + ","));
+  csvContent += "\n";
   // Columns, from element's extracted text
-  elements.forEach((el) => ( csvContent = csvContent + el.extractedText.replace(/(\r\n|\n|\r)/gm, "") + "," ));
+  elements.forEach(
+    (el) =>
+      (csvContent =
+        csvContent + el.extractedText.replace(/(\r\n|\n|\r)/gm, "") + ",")
+  );
 
   var linkElement = window.document.createElement("a");
-  linkElement.setAttribute("href", "data:text/csv;charset=utf-8," + encodeURI(csvContent));
+  linkElement.setAttribute(
+    "href",
+    "data:text/csv;charset=utf-8," + encodeURI(csvContent)
+  );
   linkElement.setAttribute("download", "upload_data.csv");
   linkElement.click();
   linkElement.remove();

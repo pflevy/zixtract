@@ -11,7 +11,8 @@ var SelectionElement = function () {
         y0 = props.y0,
         y1 = props.y1,
         id = props.id,
-        name = props.name;
+        name = props.name,
+        extractedText = props.extractedText;
 
     this.x0 = x0;
     this.x1 = x1;
@@ -19,6 +20,7 @@ var SelectionElement = function () {
     this.y1 = y1;
     this.id = id;
     this.name = name;
+    this.extractedText = extractedText;
   }
 
   _createClass(SelectionElement, [{

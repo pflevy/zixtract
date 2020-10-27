@@ -21,7 +21,6 @@ const Menu = () => {
       >
         Change Variable Names
       </button>
-
       <button
         className="btn btn-warning"
         onClick={() => {
@@ -30,6 +29,18 @@ const Menu = () => {
       >
         Set Rules{" "}
       </button>
+      table
+      <table>
+        {elements.map((el) => {
+          console.log(el);
+          return <th>{el.name || el.id.toString().slice(0, 4)}</th>;
+        })}
+        <tbody>
+          {elements.map((el) => {
+            return <td>{el.extractedText}</td>;
+          })}
+        </tbody>
+      </table>
     </div>
   );
 };
