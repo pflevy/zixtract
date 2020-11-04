@@ -30,11 +30,9 @@ function handleMouseMove(e) {
   // Render only if state of elements hovered changes.
   if (stateAnyElementsHovered === !anyElementHovered) renderAllElements();
   if (anyElementHovered) {
-    if (stateAnyElementsHovered !== anyElementHovered)
-      stateAnyElementsHovered = true;
+    if (stateAnyElementsHovered !== anyElementHovered) stateAnyElementsHovered = true;
   } else {
-    if (stateAnyElementsHovered !== anyElementHovered)
-      stateAnyElementsHovered = false;
+    if (stateAnyElementsHovered !== anyElementHovered) stateAnyElementsHovered = false;
   }
 }
 

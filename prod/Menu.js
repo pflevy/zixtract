@@ -31,24 +31,13 @@ var Menu = function Menu() {
     React.createElement(
       "button",
       {
-        className: "btn btn-primary",
+        className: "btn btn-warning",
         onClick: function onClick() {
           ReactDOM.render(e(ChangeVariableName), domContainer);
         },
         style: { marginBottom: "5px" }
       },
       "Change Variable Names"
-    ),
-    React.createElement(
-      "button",
-      {
-        className: "btn btn-warning",
-        onClick: function onClick() {
-          ReactDOM.render(e(ConditionalRules), domContainer);
-        }
-      },
-      "Set Rules",
-      " "
     ),
     React.createElement("br", null),
     React.createElement(

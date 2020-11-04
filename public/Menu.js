@@ -18,7 +18,7 @@ const Menu = () => {
     >
       <h2>Settings</h2>
       <button
-        className="btn btn-primary"
+        className="btn btn-warning"
         onClick={() => {
           ReactDOM.render(e(ChangeVariableName), domContainer);
         }}
@@ -26,14 +26,14 @@ const Menu = () => {
       >
         Change Variable Names
       </button>
-      <button
+      {/* <button
         className="btn btn-warning"
         onClick={() => {
           ReactDOM.render(e(ConditionalRules), domContainer);
         }}
       >
         Set Rules{" "}
-      </button>
+      </button> */}
       <br />
       <h3>Sheet</h3>
       <button
