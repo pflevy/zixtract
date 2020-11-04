@@ -106,9 +106,9 @@ var SelectionElement = function () {
       ctx.closePath();
 
       // Draw selectors.
-      if (this.isHovered || this.isUpdatingPosition) {
-        createSelectionAdjustPoints(this);
-      }
+      // if (this.isHovered || this.isUpdatingPosition) {
+      //   createSelectionAdjustPoints(this);
+      // }
     }
   }]);
 

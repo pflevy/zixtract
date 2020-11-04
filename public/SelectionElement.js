@@ -83,9 +83,9 @@ class SelectionElement {
     ctx.closePath();
 
     // Draw selectors.
-    if (this.isHovered || this.isUpdatingPosition) {
-      createSelectionAdjustPoints(this);
-    }
+    // if (this.isHovered || this.isUpdatingPosition) {
+    //   createSelectionAdjustPoints(this);
+    // }
   }
 }
 
